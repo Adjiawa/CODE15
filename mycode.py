@@ -5,15 +5,17 @@ import csv
 import typing
 import matplotlib.pyplot as plt
 
-
 try:
     with open("ok.txt", encoding="utf8") as fh:
         res=fh.read()
 except:
-        print("Le fichier n'existe pas %s", os.path.abspath('.txt'))
+        print("Le fichier n'existe pas %s", os.path.abspath('ok.txt'))
 ress=res.split('\n')
 tab_dest=np.array([])
 tableau_evenements=np.array([])
+SYN ="[S],"
+POUSSER = "[P.],"
+RST = "[S],"
 fic=open("text.csv", "w")#test est le fichier d'arrivée des extractions
 evenement = "DATE ; SOURCE ; PORT ; DESTINATION ; FLAG ; SEQ ; ACK ; WIN ; OPTIONS ; LENGTH" #intitulé de mes colonnes
 fic.write(evenement + "\n") #écriture de mes titres dans le tableur
