@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 
 
 try:
-    with open("DumpFile.txt", encoding="utf8") as fh:
+    with open("ok.txt", encoding="utf8") as fh:
         res=fh.read()
 except:
-        print("Le fichier n'existe pas %s", os.path.abspath('DumpFile.txt'))
+        print("Le fichier n'existe pas %s", os.path.abspath('ok.txt'))
 ress=res.split('\n')
 tab_dest=np.array([])
 tableau_evenements=np.array([])
-fic=open("test.csv", "w")#test est le fichier d'arrivée des extractions
+fic=open("text.csv", "w")#test est le fichier d'arrivée des extractions
 evenement = "DATE ; SOURCE ; PORT ; DESTINATION ; FLAG ; SEQ ; ACK ; WIN ; OPTIONS ; LENGTH" #intitulé de mes colonnes
 fic.write(evenement + "\n") #écriture de mes titres dans le tableur
 characters = ":" #définir une variable avec le caractère ":" (qui nous sera utile pour la suite)
@@ -115,8 +115,27 @@ for event in ress:
                 prog=0 #il ne fait plus de tour, il s'arrete
             evenement=heure1+";"+nomip+ ";" +port+ ";" + nomip2+ ";"+flag+ ";" +seq+ ";" +ack+ ";" +win+ ";" +options+ ";" +length
             fic.write(evenement + "\n") #on écrire "evenement" dans le csv et \n pour revenir à la ligne (pour ne pas écrire sur la même ligne)
+
+A=9
+P=6
+S=3
 print("tableau final", tab_dest)
 plt.plot(tab_dest, [1, 7, 2, 11])
 #plt.ylabel('some numbers')
 plt.show()
 fic.close()
+name = ['Flag [.]', 'Flag [P]', 'Flag [S]']
+
+data = [A,P,S]
+
+
+
+explode=(0, 0, 0)
+
+plt.pie(data, explode=explode, labels=name, autopct='%1.1f%%', startangle=90, shadow=True)
+
+plt.axis('equal')
+
+plt.savefig("graphe1.png")
+
+plt.show()
