@@ -10,7 +10,7 @@ try:
     with open("ok.txt", encoding="utf8") as fh:
         res=fh.read()
 except:
-        print("Le fichier n'existe pas %s", os.path.abspath('ok.txt'))
+        print("Le fichier n'existe pas %s", os.path.abspath('.txt'))
 ress=res.split('\n')
 tab_dest=np.array([])
 tableau_evenements=np.array([])
